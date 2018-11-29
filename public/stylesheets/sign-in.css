@@ -1,0 +1,41 @@
+body {
+    background: linear-gradient(rgba(0,0,0,0.3), 
+rgba(0,0,0,0.3)), url('/favicons/sign-in-bg.jpg');
+    background-size: 100%;
+}
+
+#sign-in-head {
+    position: absolute;
+    width: 100vw;
+    text-align: center;
+    margin-top: -7vw;
+    font-weight: bold;
+    font-family: Ubuntu-Bold;
+    text-transform: uppercase;
+}
+
+#sign-in-head > span {
+    color: white;
+    font-size: 3vw;
+}
+
+.cmn-button {
+    width: 20vw;
+    bottom: 1vw;
+}
+
+.cmn-input {
+    background: white;
+}
+
+#sign-in-bar {
+    background: white;
+    position: relative;
+    margin: auto;
+    top: 50%;
+    padding: 3vw 3vw 0 3vw;
+    margin-top: 12.5vw;
+    height: 25vw;
+    width: 35vw;
+    border-radius: 2vw;
+}

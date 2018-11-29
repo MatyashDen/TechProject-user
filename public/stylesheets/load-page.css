@@ -1,0 +1,53 @@
+#load-bar {
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+
+	top: 50%;
+
+	z-index: 1000;
+	line-height: 100%;
+}
+
+.load-circle {
+	position: absolute;
+	width: 16vw;
+	height: 16vw;
+
+	margin-top: -8vw;
+
+	left: 35%;
+	margin-left: -8vw;
+
+	border: 1.2vw solid transparent;
+	border-radius: 50%;
+	border-top-color: #1048E4;
+
+	animation: anim 1.5s ease infinite;
+}
+
+.load-circle2 {
+	animation: anim 1.5s ease-in-out infinite;
+}
+
+.load-text {
+	position: absolute;
+	right: 30%;
+	font-size: 5vw;
+	color: black;
+}
+
+@keyframes anim {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(180deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

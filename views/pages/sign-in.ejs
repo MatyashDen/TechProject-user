@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel='stylesheet' href='/stylesheets/sign-in.css' type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/load-page.css">
+  </head>
+  <body>
+    <% include ../partials/load-page.ejs %>
+    <div id='sign-in-head'>
+      <span class="cmn-headline">Введіть логін та пароль</span>
+    </div>
+    <div id='sign-in-bar'>
+      <div class="cmn-input-group">
+        <input type="text" class="cmn-input" id="sign-in-email" autocomplete="off" required>
+        <label class="cmn-input-label">Email</label>
+        <span class="cmn-input-highlight"></span>
+      </div>
+      <div class="cmn-input-group">
+        <input type="password" class="cmn-input" id="sign-in-password" autocomplete="off" required>
+        <label class="cmn-input-label">Пароль</label>
+        <span class="cmn-input-highlight"></span>
+      </div>
+      <button class="cmn-button" id='sign-in-button'>Вхiд</button>
+    </div>
+    <div class="cmn-popup cmn-ppp-error" id="message-box">
+      <span id='sign-in-message' class="cmn-text"></span>
+    </div>
+    <script src="/scripts/message.js"></script>
+    <script src="/scripts/sign-in.js"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+.nav-bar {
+	background: #272727;
+	padding: 13px;
+	font-size: 17px;
+    height: 50px;
+}
+
+.nav-left {
+    margin-left: 9%;
+    float: left;
+}
+
+.nav-right {
+    float: right;
+    margin-right: 9%;
+}
+
+.nav-bar a {
+	position: relative;
+	color: gainsboro;
+	text-decoration: none;
+	margin: 10px;
+}
+
+.nav-bar a:hover {
+    color: white;
+}
