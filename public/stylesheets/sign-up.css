@@ -21,14 +21,11 @@ rgba(0,0,0,0.3)), url('/favicons/sign-in-bg.jpg');
 
 .cmn-button {
     width: 20vw;
+    bottom: 2.5vw;
 }
 
-.cmn-input {
-    background: white;
-}
-
-.cmn-subtitle {
-    margin-top: -2vw;
+.cmn-input-group {
+    background: transparent;
 }
 
 #sign-in-bar {
@@ -37,8 +34,9 @@ rgba(0,0,0,0.3)), url('/favicons/sign-in-bg.jpg');
     margin: auto;
     top: 50%;
     padding: 3vw 3vw 0 3vw;
-    margin-top: 12.5vw;
-    height: 27vw;
-    width: 35vw;
+    margin-top: 8vw;
+    margin-bottom: 2vw;
+    height: 33vw;
+    width: 60vw;
     border-radius: 2vw;
 }

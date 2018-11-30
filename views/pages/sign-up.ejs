@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel='stylesheet' href='/stylesheets/sign-up.css' type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/load-page.css">
+  </head>
+  <body>
+    <% include ../partials/load-page.ejs %>
+    <div id='sign-in-head'>
+      <span class="cmn-headline">Зареєструватися до електронної бiблiотеки</span>
+    </div>
+    <div id='sign-in-bar'>
+      <div class="cmn-input-group">
+        <input type="text" class="cmn-input" id="name" autocomplete="off" required>
+        <label class="cmn-input-label">П.I.Б</label>
+        <span class="cmn-input-highlight"></span>
+      </div>
+      <div class="flex-wrapper">
+        <div class="cmn-input-group">
+          <input type="text" class="cmn-input" id="email" autocomplete="off" required>
+          <label class="cmn-input-label">Email</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
+        <div class="cmn-input-group">
+          <input type="date" class="cmn-input" id="born-date" autocomplete="off" required>
+          <label class="cmn-input-label">Дата народження</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
+      </div>
+      <div class="flex-wrapper">
+        <div class="cmn-input-group">
+          <input type="password" class="cmn-input" id="password" autocomplete="off" required>
+          <label class="cmn-input-label">Пароль</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
+        <div class="cmn-input-group">
+          <input type="password" class="cmn-input" id="password2" autocomplete="off" required>
+          <label class="cmn-input-label">Пiдтвердiть пароль</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
+      </div>
+      
+      <button class="cmn-button" id='sign-up-button'>Зареєструватися</button>
+    </div>
+    <div class="cmn-popup cmn-ppp-error" id="message-box">
+      <span id='sign-in-message' class="cmn-text"></span>
+    </div>
+    <script src="/scripts/message.js"></script>
+    <script src="/scripts/sign-up.js"></script>
+  </body>
+</html>

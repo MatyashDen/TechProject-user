@@ -40,6 +40,10 @@ app.get('/', function(request, response) {
   response.render('pages/sign-in');
 });
 
+app.get("/sign-up", function(request, response) {
+  response.render("pages/sign-up");
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

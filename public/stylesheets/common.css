@@ -139,6 +139,10 @@ textarea
     transform: translate(-50%, -50%);
 }
 
+.w45 {
+    width: 45%;
+}
+
 .flex-wrapper
 {
     display: flex;
@@ -463,7 +467,7 @@ button.cmn-button:focus:not(:active)::after
 /* active state */
 .cmn-input:focus ~ .cmn-input-label,
 .cmn-input:valid ~ .cmn-input-label,
-[type='datetime-local']:invalid ~ .cmn-input-label
+[type='date']:invalid ~ .cmn-input-label
 {
     font-size: 1.3vw;
 
@@ -532,7 +536,7 @@ button.cmn-button:focus:not(:active)::after
 }
 
 /* Extra */
-#black
+.black
 {
     position: fixed;
     z-index: +2;
