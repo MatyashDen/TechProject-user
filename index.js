@@ -44,6 +44,33 @@ app.get("/sign-up", function(request, response) {
   response.render("pages/sign-up");
 });
 
+app.get("/books", function(request, response) {
+  let booksCol = db.collection("books");
+
+  booksCol.orderBy("dateOfAdd", "desc").get()
+  .then(function(booksQuery) {
+    let books = [];
+
+    booksQuery.forEach(function(doc) {
+      books.push(doc.data());
+    });
+
+    response.render("pages/books", {books: books});
+  });
+});
+
+app.get("writers", function(request, reponse) {
+  response.render("pages/writers");
+});
+
+app.get("/profile", function(request, reponse) {
+  response.render("pages/profile");
+});
+
+app.get("/exit", function(request, response) {
+  response.redirect("/");
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

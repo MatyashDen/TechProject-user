@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel='stylesheet' href='/stylesheets/books.css' type='text/css'>
+    <!--<link rel="stylesheet" href="/stylesheets/book-view.css">-->
+    <link rel="stylesheet" href="/stylesheets/load-page.css">
+  </head>
+  <body>
+    <div class="wallpaper"></div>
+    <div class="sidebar-control">
+      ☰
+    </div>
+
+    <div id="content">
+      <% include ../partials/navigation.ejs %>
+      <% include ../partials/load-page.ejs %>
+
+      <!-- Sidebar -->
+
+      <span class="black"></span>
+      <div class="cmn-row">
+        <div class="index-content">
+          <h1 class="index-title">Усі книги</h1>
+          <% if (books.length == 0) { %>
+            <div>
+              <span class="index-title">Немає книг...</span>
+            </div>
+          <% } else { %>
+            <div class="index-dish-card-menu">
+              <% books.forEach(function(item, index) { %>
+                <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genre="<%= item.genresId %>">
+                  <img class="index-card-img" src="<%= item.pictureUrl %>">
+                  <div class="card-name"><%= item.title %></div>
+                  <div class="index-card-price-and-button">
+                    <span id="<%= item.id %>" class="card-button">Хочу</span>
+                  </div>
+                </div>
+              <% }); %>
+            </div> 
+          <% } %>
+        </div>
+      </div>
+      
+      <% include ../partials/message.ejs %>
+    </div>
+  
+    <script>
+      $(".sidebar-control").click(function() {
+        $("#sidebar").animate({width: "toggle"});
+      });
+      $(".dropdown-toggle").click(function() {
+        $parent = $(this).parent();
+        $parent.find(".dropdown-list").animate({height: "toggle"});
+        if ($parent.hasClass("shown")) {
+          $parent.removeClass("shown");
+        } else {
+          $parent.addClass("shown");
+        }
+      });
+    </script>
+    
+    <script src="/scripts/message.js"></script>
+    <script src="/scripts/books.js"></script>
+
+  </body>
+</html>

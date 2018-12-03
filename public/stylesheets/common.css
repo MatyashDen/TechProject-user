@@ -79,6 +79,77 @@ textarea
     padding: 0;
 }
 
+
+@font-face
+{
+    font-family: Poetica; /* Имя шрифта */
+
+    src: url('/fonts/Poetica Serenada.ttf'); /* Путь к файлу со шрифтом */
+}
+@font-face
+{
+    font-family: Bethoven; /* Имя шрифта */
+
+    src: url('/fonts/Ludvig van Bethoveen.ttf'); /* Путь к файлу со шрифтом */
+}
+@font-face
+{
+    font-family: Champion; /* Имя шрифта */
+
+    src: url('/fonts/PFChampionScriptPro-Bold.otf'); /* Путь к файлу со шрифтом */
+}
+@font-face
+{
+    font-family: Mozart; /* Имя шрифта */
+
+    src: url('/fonts/Wolfgang Amadeus Mozart.ttf'); /* Путь к файлу со шрифтом */
+}
+
+@font-face
+{
+    font-family: Langustine; /* Имя шрифта */
+
+    src: url('/fonts/Langustine.ttf'); /* Путь к файлу со шрифтом */
+}
+
+body
+{
+    position: relative;
+}
+
+.wallpaper
+{
+    position: absolute;
+    z-index: -10;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: .1;
+    background: url('/favicons/menu-bg.jpg');
+}
+
+.index-content
+{
+    display: block;
+
+    padding-top: 3vw;
+}
+
+.index-title
+{
+    font-family: Mozart;
+    font-size: 7vw;
+    font-weight: 600;
+
+    display: block;
+
+    margin-bottom: 1vw;
+    padding: 2.5vw 0;
+
+    text-align: center;
+}
+
 /* COMMON-ELEMENTS ================== */
 .cmn-row
 {
@@ -373,19 +444,7 @@ button.cmn-button:focus:not(:active)::after
 {
     color: white;
     background: #f00;
-}
-
-.orange
-{
-    border-color: #ff9b37;
-    background-color: #ff9b37;
-}
-
-.orange:hover
-{
-    color: #ff9b37!important;
-    background: white;
-}
+}s
 
 /* POPUP_MESSAGE ========================= */
 .cmn-popup
