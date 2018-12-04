@@ -1,0 +1,66 @@
+#book-view-bar
+{
+    font-size: 1.2vw;
+
+    position: fixed;
+    z-index: +999;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+
+    width: 52vw;
+    height: 40vw;
+    padding: 2vw;
+
+    transform: translate(-50%, -50%);
+
+    color: #333;
+    border: 0.15vw solid black;
+    border-radius: 1vw;
+    background: white;
+}
+
+#book-img
+{
+    float: left;
+
+    width: 9vw;
+    margin-right: 2vw;
+    border: 0.15vw solid;
+}
+
+#book-name
+{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.6vw;
+}
+
+.book-head::after
+{
+    display: block;
+    visibility: none;
+    clear: both;
+
+    height: 0;
+
+    content: '';
+}
+
+.book-head .header
+{
+    font-size: 2vw;
+    line-height: 2vw;
+
+    text-align: center;
+}
+
+.vintage-button.book-view
+{
+    position: absolute;
+    bottom: 1vw;
+    left: 50%;
+
+    transform: translateX(-50%);
+}

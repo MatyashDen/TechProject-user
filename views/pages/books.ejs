@@ -3,7 +3,7 @@
   <head>
     <% include ../partials/header.ejs %>
     <link rel='stylesheet' href='/stylesheets/books.css' type='text/css'>
-    <!--<link rel="stylesheet" href="/stylesheets/book-view.css">-->
+    <link rel="stylesheet" href="/stylesheets/book-view.css">
     <link rel="stylesheet" href="/stylesheets/load-page.css">
   </head>
   <body>
@@ -15,7 +15,7 @@
     <div id="content">
       <% include ../partials/navigation.ejs %>
       <% include ../partials/load-page.ejs %>
-
+      <% include ../partials/book-view.ejs %>
       <!-- Sidebar -->
 
       <span class="black"></span>
@@ -33,7 +33,7 @@
                   <img class="index-card-img" src="<%= item.pictureUrl %>">
                   <div class="card-name"><%= item.title %></div>
                   <div class="index-card-price-and-button">
-                    <span id="<%= item.id %>" class="card-button">Хочу</span>
+                    <span data-id="<%= item.id %>" class="card-button">Хочу</span>
                   </div>
                 </div>
               <% }); %>

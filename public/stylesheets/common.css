@@ -79,7 +79,6 @@ textarea
     padding: 0;
 }
 
-
 @font-face
 {
     font-family: Poetica; /* Имя шрифта */
@@ -150,11 +149,125 @@ body
     text-align: center;
 }
 
+.exit-sign
+{
+    font-size: 1.3vw;
+
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+
+    padding: 0.7vw;
+
+    transform: translate(50%, -50%);
+
+    color: red;
+    border: 0.15vw solid #333;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/* Button */
+.vintage-button img
+{
+    position: absolute;
+    top: 0;
+
+    display: block;
+
+    height: 100%;
+}
+
+.vintage-button .inside
+{
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+@keyframes left-deco-anim
+{
+    0%
+    {
+        left: -7vw;
+    }
+    50%
+    {
+        left: -9vw;
+    }
+    100%
+    {
+        left: -7vw;
+    }
+}
+
+@keyframes right-deco-anim
+{
+    0%
+    {
+        right: -7vw;
+    }
+    50%
+    {
+        right: -9vw;
+    }
+    100%
+    {
+        right: -7vw;
+    }
+}
+
+button.vintage-link
+{
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.vintage-link
+{
+    font-family: Langustine;
+    font-size: 3vw;
+    line-height: 3vw;
+
+    position: relative;
+
+    display: block;
+
+    margin: 0 auto;
+
+    transition: color .3s;
+    text-align: center;
+
+    color: #333;
+}
+
+.right-deco
+{
+    animation: left-deco-anim 2s infinite;
+}
+
+.left-deco
+{
+    animation: right-deco-anim 2s infinite;
+}
+
+.vintage-link:hover {
+    color: #3da2ed;
+}
+
+.vintage-link:focus
+{
+    color: #333;
+}
+
 /* COMMON-ELEMENTS ================== */
 .cmn-row
 {
     width: 80%;
     margin: auto;
+    margin-bottom: 3vw;
 }
 
 .cmn-head
@@ -324,128 +437,6 @@ body
     line-height: 50px!important;
 }
 
-/* BUTTON ========================== */
-.cmn-button
-{
-    /* INCLUDE THIS INSTEAD 7 LINES BELOW /// DO AFTER 08.10.18
-    font-size: 1.5vw;
-
-    position: relative;
-
-    display: block;
-    overflow: hidden;
-
-    padding: 10px 12px;
-
-*/
-    font-size: 2vw;
-
-    position: relative;
-
-    display: block;
-    overflow: hidden;
-
-    width: 25%;
-    height: 5vw;
-    margin: 3% auto;
-
-    cursor: pointer;
-    -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
-        -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
-            transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
-
-    color: rgb(245,245,245);
-    border: 0.2vw solid #0bce0c;
-    border-radius: 4vw;
-    background: #0bce0c;
-}
-
-.cmn-button:after
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 5px;
-    height: 5px;
-
-    content: '';
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
-
-    opacity: 0;
-    border-radius: 100%;
-    background: rgba(255, 255, 255, .35);
-}
-
-@keyframes ripple
-{
-    0%
-    {
-        transform: scale(0, 0);
-
-        opacity: 1;
-    }
-    20%
-    {
-        transform: scale(55, 25);
-
-        opacity: 1;
-    }
-    100%
-    {
-        transform: scale(100, 40);
-
-        opacity: 0;
-    }
-}
-
-.cmn-button:hover:not(:focus)
-{
-    color: #0bce0c;
-    background: white;
-}
-
-a.cmn-button:focus
-{
-    color: #0bce0c;
-    background: white;
-}
-
-button.cmn-button:focus:not(:active)::after
-{
-    animation: ripple 1s ease-out;
-}
-
-.cmn-delete-button
-{
-    font-size: 1.5vw;
-
-    position: relative;
-
-    display: block;
-    overflow: hidden;
-
-    padding: 1vw;
-
-    cursor: pointer;
-    -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s;
-        -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s;
-            transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s;
-
-    color: rgb(245,245,245);
-    color: #f00;
-    border: 0.2vw solid #f00;
-    border-radius: 4vw;
-    background: white;
-}
-
-.cmn-delete-button:hover
-{
-    color: white;
-    background: #f00;
-}s
-
 /* POPUP_MESSAGE ========================= */
 .cmn-popup
 {
@@ -579,26 +570,11 @@ button.cmn-button:focus:not(:active)::after
     width: 50%;
 }
 
-/* Navigation */
-.nav-bar
-{
-    font-size: 1.3vw!important;
-    line-height: 4vw!important;
-
-    height: 4vw!important;
-    padding: 0!important;
-}
-
-.nav-bar a
-{
-    margin: .8vw!important;
-}
-
 /* Extra */
 .black
 {
     position: fixed;
-    z-index: +2;
+    z-index: +10;
     top: 0;
 
     display: none;

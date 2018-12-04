@@ -59,7 +59,7 @@ app.get("/books", function(request, response) {
   });
 });
 
-app.get("writers", function(request, reponse) {
+app.get("/writers", function(request, reponse) {
   response.render("pages/writers");
 });
 
