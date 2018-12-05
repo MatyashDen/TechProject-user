@@ -262,6 +262,73 @@ button.vintage-link
     color: #333;
 }
 
+/* Green button */
+.cmn-button
+{
+    /* INCLUDE THIS INSTEAD 7 LINES BELOW /// DO AFTER 08.10.18
+    font-size: 1.5vw;
+     position: relative;
+     display: block;
+    overflow: hidden;
+     padding: 10px 12px;
+ */
+    font-size: 2vw;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 25%;
+    height: 5vw;
+    margin: 3% auto;
+     cursor: pointer;
+    -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
+        -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
+            transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
+    color: rgb(245,245,245);
+    border: 0.2vw solid #0bce0c;
+    border-radius: 4vw;
+    background: #0bce0c;
+}
+
+.cmn-button:after
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    content: '';
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+    opacity: 0;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, .35);
+}
+
+@keyframes ripple
+{
+    0%
+    {
+        transform: scale(0, 0);
+        opacity: 1;
+    }
+    20%
+    {
+        transform: scale(55, 25);
+        opacity: 1;
+    }
+    100%
+    {
+        transform: scale(100, 40);
+        opacity: 0;
+    }
+}
+
+.cmn-button:hover:not(:focus)
+{
+    color: #0bce0c;
+    background: white;
+}
+
 /* COMMON-ELEMENTS ================== */
 .cmn-row
 {

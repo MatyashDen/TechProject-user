@@ -45,11 +45,29 @@
 	dark.on("click", closeView);
 
 	addButton.on("click", function() {
+		loadBar.css("display", "block");
 
+		let 
+			journal = db.collection("journal"),
+			key = journal.doc().id;
+
+		journal.doc(key).set({
+			id: key,
+			userId: firebase.auth().currentUser.uid,
+			bookId: $("#book-view-bar").attr("data-bookId"),
+			status: "new",
+			dateOfAccept: -1,
+			dateOfEnd: -1,
+			dateOfAdd: new Date().getTime()
+		}).then(function() {
+			closeView();
+			displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+		});
 	});
 
 	function showView(bookId) {
 		loadBar.css("display", "block");
+		dishViewBar.attr("data-bookId", bookId);
 
 		db.collection("books").doc(bookId).get()
 		.then(function(doc) {
@@ -98,8 +116,5 @@
 
 		dishViewBar.css("display", "none");
 		dark.css("display", "none");
-
-		//bookGenres.html("");
-		//bookWriters.html("");
 	}
 }	
