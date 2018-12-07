@@ -64,7 +64,9 @@
 
     display: block;
 
-    transition: .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+        -moz-transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+            transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
     text-align: center;
     text-transform: uppercase;
 
@@ -83,7 +85,10 @@
     height: 100%;
 
     content: '';
-    transition: .3s ease-in-out;
+
+    -webkit-transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+        -moz-transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+            transition: all .3s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
 }
 
 .card-button::before {
@@ -91,6 +96,7 @@
 
     content: 'ДУЖЕ';
     transition: .3s ease-in-out .1s;
+
     text-align: left;
 }
 
@@ -126,43 +132,35 @@
     display: none;
     overflow-y: scroll;
 
-    width: 300px;
+    width: 22vw;
     min-height: 100%;
-    padding-top: 62px;
+    padding-top: 2.5vw;
 
     background-color: #4c4c4cff;
 }
 
 .sidebar-header h3
 {
-    font-size: 50px;
+    font-size: 2.8vw;
     font-weight: 600;
 
-    margin: 45px 0 12px 20px;
+    margin: 3vw 0 1vw 1.2vw;
 
     color: #fff;
 }
 
 .sidebar-list-content
 {
-    margin: 12px 0 12px 0;
-}
-
-.sidebar-header-content
-{
-    font-size: 30px;
-
-    margin: 0 0 12px 20px;
-
-    color: #fff;
+    margin: 1vw 0 1vw 0;
 }
 
 .sidebar-list-element
 {
     position: relative;
+    cursor: pointer;
 
     width: 100%;
-    height: 50px;
+    height: 4vw;
 }
 
 .sidebar-list-element label
@@ -174,13 +172,11 @@
     margin: 0!important;
 }
 
-.sidebar-list-element input
-{
+.sidebar-list-element input {
     display: none;
 }
 
-.sidebar-list-element input:checked ~ span
-{
+.sidebar-list-element input:checked ~ span {
     font-style: italic;
 
     text-decoration: underline;
@@ -188,89 +184,83 @@
     color: #fff;
 }
 
-.sidebar-list-element span
-{
-    font-size: 20px;
-    line-height: 50px;
+.sidebar-list-element span {
+    font-size: 1.5vw;
+    line-height: 4vw;
 
     position: relative;
 
     display: block;
 
-    padding-left: 50px;
+    padding-left: 4vw;
 
     white-space: nowrap;
 
     color: #ccc;
 }
 
-.sidebar-list-element span:hover
-{
+.sidebar-list-element span:hover {
     color: #fff;
 }
 
-.sidebar-list-element .dropdown-list span
-{
-    padding-left: 70px;
+.sidebar-list-element .dropdown-list span {
+    cursor: pointer;
+    padding-left: 5vw;
 }
 
-.sidebar-list-element .dropdown-list li:hover
-{
+.sidebar-list-element .dropdown-list li:hover {
     background-color: #666ff;
 }
 
-.sidebar-list-element.active
-{
+.sidebar-list-element.active {
     height: auto;
 
     background-color: #3f3f3fff;
 }
 
-.sidebar-list-element.active > span::after
-{
-    font-size: 14px;
+.sidebar-list-element.active > span::after {
+    font-size: 1.2vw;
 
     position: absolute;
     top: 0;
-    right: 20px;
+    right: 1.5vw;
 
     display: block;
 
     content: '▼';
-    transition: .4s;
+    -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+        -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+            transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
 }
 
-.sidebar-list-element.active.shown > span::after
-{
+.sidebar-list-element.active.shown > span::after {
     transform: rotate(180deg);
 }
 
-#slider[style~='block'] .sidebar-list-element.active.shown > a::after
-{
+#slider[style~='block'] .sidebar-list-element.active.shown > a::after {
     display: none;
 }
 
-.sidebar-list-element .dropdown-list
-{
+.sidebar-list-element .dropdown-list {
     display: none;
 }
 
 #sidebar-filter-btn {
     display: block;
     margin: 0 auto;
-    min-width: 180px; 
-    max-width: 180px; 
-    min-height: 50px;
-    max-height: 50px;
+    
+    width: 13vw; 
+    height: 3vw;
     margin: auto;
-    cursor: pointer;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 2vw;
     border: none;
     
-    font-size: 24px
+    font-size: 1.5vw;
     color: #333;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+        -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
+            transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s, margin 0s;
 }
 
 #sidebar-filter-btn:hover {

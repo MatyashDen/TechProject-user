@@ -111,11 +111,6 @@ textarea
     src: url('/fonts/Langustine.ttf'); /* Путь к файлу со шрифтом */
 }
 
-body
-{
-    position: relative;
-}
-
 .wallpaper
 {
     position: absolute;
@@ -265,24 +260,21 @@ button.vintage-link
 /* Green button */
 .cmn-button
 {
-    /* INCLUDE THIS INSTEAD 7 LINES BELOW /// DO AFTER 08.10.18
     font-size: 1.5vw;
-     position: relative;
-     display: block;
-    overflow: hidden;
-     padding: 10px 12px;
- */
-    font-size: 2vw;
+    line-height: 1.5vw;
     position: relative;
-    display: block;
+    display: inline-block;
     overflow: hidden;
-    width: 25%;
-    height: 5vw;
-    margin: 3% auto;
-     cursor: pointer;
+    padding: 0.4vw 1vw;
+    width: 10vw;
+    
+    cursor: pointer;
+
+    cursor: pointer;
     -webkit-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
         -moz-transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
             transition: all .4s ease-in-out, font-size 0s, height 0s, width 0s, border-radius 0s, padding 0s, bottom 0s;
+
     color: rgb(245,245,245);
     border: 0.2vw solid #0bce0c;
     border-radius: 4vw;
@@ -294,14 +286,17 @@ button.vintage-link
     position: absolute;
     top: 50%;
     left: 50%;
+
     width: 5px;
     height: 5px;
+
     content: '';
     transform: scale(1, 1) translate(-50%);
     transform-origin: 50% 50%;
+
     opacity: 0;
     border-radius: 100%;
-    background: rgba(255, 255, 255, .35);
+    background: rgba(255, 255, 255, .4);
 }
 
 @keyframes ripple
@@ -309,16 +304,19 @@ button.vintage-link
     0%
     {
         transform: scale(0, 0);
+
         opacity: 1;
     }
-    20%
+    40%
     {
-        transform: scale(55, 25);
+        transform: scale(40, 20);
+
         opacity: 1;
     }
     100%
     {
-        transform: scale(100, 40);
+        transform: scale(60, 30);
+
         opacity: 0;
     }
 }
@@ -327,6 +325,28 @@ button.vintage-link
 {
     color: #0bce0c;
     background: white;
+}
+
+.cmn-button:focus
+{
+    color: white;
+    background: #0bce0c;
+}
+
+.cmn-button:focus:not(:active)::after
+{
+    animation: ripple 1s ease-out;
+}
+
+.cmn-button-center {
+    margin: 2vw auto;
+    display: block;
+}
+
+.cmn-button-big {
+    width: auto;
+    font-size: 2.5vw;
+    padding: 1.5vw;
 }
 
 /* COMMON-ELEMENTS ================== */
@@ -591,6 +611,10 @@ button.vintage-link
     top: -1.2vw;
 
     color: #5264ae;
+}
+
+[type='date'] {
+    line-height: auto!important;
 }
 
 /* BOTTOM BARS ================================= */

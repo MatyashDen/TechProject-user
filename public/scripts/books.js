@@ -13,6 +13,7 @@
 		bookWriters = $("#book-writers"),
 		bookGenres = $("#book-genres"),
 		bookDescription = $("#book-description"),
+		bookAmount = $("#book-amount"),
 
 		dark = $(".black").eq(1),
 		loadBar = $("#load-bar");
@@ -34,6 +35,49 @@
 	  this.waitBlock = callback;
 	}
 
+	$("#sidebar-filter-btn").on("click", function() {
+		let 
+			genres = $("[name='genreRadio']:checked"),
+			writers = $("[name='writerRadio']:checked"),
+			books = $(".index-dish-card"),
+			have = false;
+
+		$(".index-title").html("Усi книги");
+
+        $("#sidebar").animate({width: "toggle"});
+
+		for (let i = 0; i < books.length; ++i) {
+			let 
+				genre = genres.length == 0,
+				writer = writers.length == 0;
+
+			for (let j = 0; j < genres.length; ++j) {
+				if (books.eq(i).attr("data-genres").indexOf(genres.eq(j).val()) != -1) {
+					genre = true;
+					break;
+				}
+			}
+
+			for (let j = 0; j < writers.length; ++j) {
+				if (books.eq(i).attr("data-writers").indexOf(writers.eq(j).val()) != -1) {
+					writer = true;
+					break;
+				}
+			}
+
+			if (genre && writer) {
+				books.eq(i).css("display", "block");
+				have = 1;
+			}
+			else 
+				books.eq(i).css("display", "none");
+		}
+
+		if (!have) {
+			$(".index-title").html("Немає книг");
+		}
+	});
+
 	// Show dish
 	buttons.on("click", function () {
 		let bookId = $(this).attr("data-id");
@@ -45,24 +89,28 @@
 	dark.on("click", closeView);
 
 	addButton.on("click", function() {
-		loadBar.css("display", "block");
+		if (bookAmount.html()[0] != 0) {
+			loadBar.css("display", "block");
 
-		let 
-			journal = db.collection("journal"),
-			key = journal.doc().id;
+			let 
+				journal = db.collection("journal"),
+				key = journal.doc().id;
 
-		journal.doc(key).set({
-			id: key,
-			userId: firebase.auth().currentUser.uid,
-			bookId: $("#book-view-bar").attr("data-bookId"),
-			status: "new",
-			dateOfAccept: -1,
-			dateOfEnd: -1,
-			dateOfAdd: new Date().getTime()
-		}).then(function() {
-			closeView();
-			displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
-		});
+			journal.doc(key).set({
+				id: key,
+				userId: firebase.auth().currentUser.uid,
+				bookId: $("#book-view-bar").attr("data-bookId"),
+				status: "new",
+				dateOfAccept: -1,
+				dateOfEnd: -1,
+				dateOfAdd: new Date().getTime()
+			}).then(function() {
+				closeView();
+				displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+			});
+		} else {
+			displayMessage("Немає книг, зайдiть пiзнiше", 1);
+		}
 	});
 
 	function showView(bookId) {
@@ -100,6 +148,20 @@
 			barrier.await(function() {
 				bookName.html(doc.data().title);
 				bookDescription.html(doc.data().description);
+
+				let amount = doc.data().amount;
+
+				amount = amount.toString();
+
+				if (amount % 10 >= 5 || amount % 100 >= 5 && amount % 100 <= 20 || !(amount % 10)) { 
+                    amount += " книг"
+                } else if (amount % 10 == 1) { 
+                    amount += " книга";
+                } else { 
+                    amount += " книги";
+                } 
+
+				bookAmount.html(amount);
 
 				bookGenres.html(genres.join(", "));
 				bookWriters.html(writers.join(", "));

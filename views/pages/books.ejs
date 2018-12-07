@@ -17,7 +17,42 @@
       <% include ../partials/load-page.ejs %>
       <% include ../partials/book-view.ejs %>
       
-      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="sidebar-header">
+          <h3>Фiльтрацiя</h3>
+        </div>
+        <ul class="sidebar-list-content">
+          <li class="sidebar-list-element active">
+            <span class="dropdown-toggle">Жанри</span>
+            <ul class="dropdown-list">
+              <% allGenres.forEach(function(item) { %>
+              <li>
+                <label>
+                  <input type="checkbox" name="genreRadio" value="<%= item.id %>">
+                  <span><%= item.title %></span>
+                </label>
+              </li>
+              <% }); %>
+            </ul>
+          </li>
+
+          <li class="sidebar-list-element active">
+            <span class="dropdown-toggle">Автори</span>
+            <ul class="dropdown-list">
+              <% allWriters.forEach(function(item) { %>
+               <li>
+                <label>
+                  <input type="checkbox" name="writerRadio" value="<%= item.id %>">
+                  <span><%= item.name %>
+                  </span>
+                </label>
+              </li>
+              <% }); %>
+            </ul>
+          </li>
+        </ul>
+        <button id="sidebar-filter-btn">Обрати</button>
+      </div>
 
       <span class="black"></span>
       <div class="cmn-row">
@@ -30,7 +65,7 @@
           <% } else { %>
             <div class="index-dish-card-menu">
               <% books.forEach(function(item, index) { %>
-                <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genre="<%= item.genresId %>">
+                <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
                   <img class="index-card-img" src="<%= item.pictureUrl %>">
                   <div class="card-name"><%= item.title %></div>
                   <div class="index-card-price-and-button">

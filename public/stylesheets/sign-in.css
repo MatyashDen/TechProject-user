@@ -21,6 +21,7 @@ rgba(0,0,0,0.3)), url('/favicons/sign-in-bg.jpg');
 
 .cmn-button {
     width: 20vw;
+    margin-top: 1vw;
 }
 
 .cmn-input {

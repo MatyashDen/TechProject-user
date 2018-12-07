@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(favicon(__dirname + '/public/favicons/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicons/favicon.png'));
 
 app.get('/', function(request, response) {
   response.render('pages/sign-in');
@@ -45,17 +45,39 @@ app.get("/sign-up", function(request, response) {
 });
 
 app.get("/books", function(request, response) {
-  let booksCol = db.collection("books");
+  let 
+    booksCol = db.collection("books"),
+    writersCol = db.collection("writers"),
+    genresCol = db.collection("genres");
 
-  booksCol.orderBy("dateOfAdd", "desc").get()
-  .then(function(booksQuery) {
-    let books = [];
+  writersCol.orderBy("dateOfAdd", "desc").get()
+  .then(function(writersQuery) {
 
-    booksQuery.forEach(function(doc) {
-      books.push(doc.data());
+    genresCol.orderBy("dateOfAdd", "desc").get()
+    .then(function(genresQuery) {
+
+      booksCol.orderBy("dateOfAdd", "desc").get()
+      .then(function(booksQuery) {
+        let 
+          books = [],
+          allGenres = [],
+          allWriters = [];
+
+        booksQuery.forEach(function(doc) {
+          books.push(doc.data());
+        });
+
+        genresQuery.forEach(function(doc) {
+          allGenres.push(doc.data());
+        });
+
+        writersQuery.forEach(function(doc) {
+          allWriters.push(doc.data());
+        });
+
+        response.render("pages/books", {books: books, allGenres: allGenres, allWriters: allWriters});
+      });
     });
-
-    response.render("pages/books", {books: books});
   });
 });
 
