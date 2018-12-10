@@ -3,10 +3,10 @@
   <head>
     <% include ../partials/header.ejs %>
     <style>
-      #nav-writers {
+      /*#nav-writers {
         color: white;
         font-weight: 600;
-      }
+      }*/
     </style>
     <link rel="stylesheet" href="/stylesheets/load-page.css">
     <link rel='stylesheet' href='/stylesheets/writers.css' type='text/css'>
@@ -20,22 +20,18 @@
       <% let monthes = ["січня", "лютого", "березня", "квiтня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"]; %>
 
       <% if (writers.length == 0) { %>
-        <div class="cmn-no-tables">
+        <div class="index-title">
           Немає письменникiв
         </div>
       <% } else { %>
         <div class="cmn-row">
           <div class="index-content">
+            <h1 class="index-title">Усі письменики</h1>
             <% writers.forEach(function(item) { 
               let pictureUrl = "/favicons/no-image.svg";
 
               if (item.pictureUrl !== "")
-                  pictureUrl = item.pictureUrl;
-
-              description = item.description.substr(0, 610);
-
-              if (description != item.description)
-                description += "...";
+                pictureUrl = item.pictureUrl;
             %>
               <div class="cmn-category-block" data-id="<%= item.id %>">
                 <div class="cmn-category-content">
@@ -64,7 +60,10 @@
                    
                     <div class="middle-block">
                       <div class="cmn-subtitle">
-                        <b>Бiографiя:</b> <%= description %>
+                        <b>Бiографiя:</b>
+                        <div class="description">
+                          <%= item.description %>
+                        </div> 
                       </div>
                     </div>
                   </div>

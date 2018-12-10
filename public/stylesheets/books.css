@@ -152,8 +152,6 @@
 .sidebar-list-content
 {
     margin: 1vw 0 1vw 0;
-    overflow-y: scroll;
-    max-height: 60vh;
 }
 
 .sidebar-list-element
@@ -243,6 +241,8 @@
 
 .sidebar-list-element .dropdown-list {
     display: none;
+    overflow-y: scroll;
+    max-height: 25vh;
 }
 
 #sidebar-filter-btn {

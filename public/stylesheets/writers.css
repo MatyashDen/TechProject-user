@@ -10,6 +10,12 @@
     margin-left: 1vw;
 }
 
+.description {
+    overflow-y: scroll;
+
+    height: 13vw;
+}
+
 .flex-wrapper
 {
     align-items: flex-start;
