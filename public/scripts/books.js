@@ -1,6 +1,7 @@
 {
 	let 
 		db = firebase.firestore(),
+		journalCol = db.collection("journal"),
 
 		buttons = $(".card-button"),
 
@@ -89,26 +90,39 @@
 	dark.on("click", closeView);
 
 	addButton.on("click", function() {
+		loadBar.css("display", "block");
+
 		if (bookAmount.html()[0] != 0) {
-			loadBar.css("display", "block");
-
 			let 
-				journal = db.collection("journal"),
-				key = journal.doc().id;
+				userId = firebase.auth().currentUser.uid,
+				bookId = $("#book-view-bar").attr("data-bookId"),
+				key = journalCol.doc().id;
 
-			journal.doc(key).set({
-				id: key,
-				userId: firebase.auth().currentUser.uid,
-				bookId: $("#book-view-bar").attr("data-bookId"),
-				status: "new",
-				dateOfAccept: -1,
-				dateOfEnd: -1,
-				dateOfAdd: new Date().getTime()
-			}).then(function() {
-				closeView();
-				displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+			journalCol.where("userId", "==", userId).where("bookId", "==", bookId)
+			.where("status", "==", "new").get()
+			.then(function(journalQuery) {
+				if (journalQuery.size == 0) {
+					journalCol.doc(key).set({
+						id: key,
+						userId: userId,
+						bookId: bookId,
+						status: "new",
+						dateOfAccept: -1,
+						dateOfEnd: -1,
+						dateOfAdd: new Date().getTime()
+					}).then(function() {
+						closeView();
+						displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+					});
+				} else {
+					loadBar.css("display", "none");
+
+					displayMessage("Заявку вже вiдправлено", 1);
+				}
 			});
 		} else {
+			loadBar.css("display", "none");
+
 			displayMessage("Немає книг, зайдiть пiзнiше", 1);
 		}
 	});

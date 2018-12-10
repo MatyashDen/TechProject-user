@@ -4,6 +4,11 @@ rgba(0,0,0,0.3)), url('/favicons/sign-in-bg.jpg');
     background-size: 100%;
 }
 
+.cmn-input-group {
+    margin: auto;
+    margin-bottom: 3vw;
+}
+
 #sign-in-head {
     position: absolute;
     width: 100vw;

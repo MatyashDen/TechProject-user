@@ -1,0 +1,71 @@
+.dish-inline-block
+{
+    display: inline-block;
+
+    width: 30%;
+}
+
+.middle-block
+{
+    margin-left: 1vw;
+}
+
+.flex-wrapper
+{
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+/*
+.middle-block {
+    width: 40vw;
+} */
+
+.kitchen-img
+{   
+    width: 15vw;
+    min-width: 15vw;
+
+    border: 0.2vw solid;
+    border-radius: 50%;
+}
+
+.cmn-category-content-text
+{
+    font-size: 1.2vw;
+
+    display: block;
+
+    width: 100%;
+}
+
+.cmn-headline
+{
+    font-size: 1.9vw;
+    color: #333;
+    font-weight: 600;
+}
+
+.cmn-subtitle
+{
+    font-size: 1.4vw;
+
+    color: #333;
+}
+
+.cmn-category-content-buttons {
+    top: 17vw;
+}
+
+.kitchen-img-wrapper {
+    overflow: hidden;
+    width: 10vw;
+    height: 10vw;
+    position: relative;
+}
+
+.kitchen-img-wrapper .kitchen-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

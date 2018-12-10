@@ -81,11 +81,22 @@ app.get("/books", function(request, response) {
   });
 });
 
-app.get("/writers", function(request, reponse) {
-  response.render("pages/writers");
+app.get("/writers", function(request, response) {
+  let writersCol = db.collection("writers").orderBy("dateOfAdd", "desc");
+
+  writersCol.get()
+  .then(writersQuery => {
+    let writers = [];
+
+    writersQuery.forEach(doc => {
+      writers.push(doc.data());
+    });
+
+    response.render("pages/writers", {writers: writers});
+  });
 });
 
-app.get("/profile", function(request, reponse) {
+app.get("/profile", function(request, response) {
   response.render("pages/profile");
 });
 

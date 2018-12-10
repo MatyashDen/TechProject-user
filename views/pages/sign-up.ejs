@@ -11,10 +11,17 @@
       <span class="cmn-headline">Зареєструватися до електронної бiблiотеки</span>
     </div>
     <div id='sign-in-bar'>
-      <div class="cmn-input-group">
-        <input type="text" class="cmn-input" id="name" autocomplete="off" required>
-        <label class="cmn-input-label">П.I.Б</label>
-        <span class="cmn-input-highlight"></span>
+      <div class="flex-wrapper">
+        <div class="cmn-input-group">
+          <input type="text" class="cmn-input" id="name" autocomplete="off" required>
+          <label class="cmn-input-label">П.I.Б</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
+        <div class="cmn-input-group">
+          <input type="date" class="cmn-input" id="born-date" autocomplete="off" required>
+          <label class="cmn-input-label">Дата народження</label>
+          <span class="cmn-input-highlight"></span>
+        </div>
       </div>
       <div class="flex-wrapper">
         <div class="cmn-input-group">
@@ -23,8 +30,8 @@
           <span class="cmn-input-highlight"></span>
         </div>
         <div class="cmn-input-group">
-          <input type="date" class="cmn-input" id="born-date" autocomplete="off" required>
-          <label class="cmn-input-label">Дата народження</label>
+          <input type="number" class="cmn-input" id="phone-number" value="380" autocomplete="off" required>
+          <label class="cmn-input-label">Номер телефону</label>
           <span class="cmn-input-highlight"></span>
         </div>
       </div>

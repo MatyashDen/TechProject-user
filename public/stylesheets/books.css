@@ -130,7 +130,7 @@
     left: 0;
 
     display: none;
-    overflow-y: scroll;
+   
 
     width: 22vw;
     min-height: 100%;
@@ -152,6 +152,8 @@
 .sidebar-list-content
 {
     margin: 1vw 0 1vw 0;
+    overflow-y: scroll;
+    max-height: 60vh;
 }
 
 .sidebar-list-element
@@ -193,8 +195,6 @@
     display: block;
 
     padding-left: 4vw;
-
-    white-space: nowrap;
 
     color: #ccc;
 }
@@ -265,4 +265,9 @@
 
 #sidebar-filter-btn:hover {
     background-color: #ffab4a;
+}
+
+.dropdown-list span {
+    line-height: 2vw;
+    padding-bottom: 0.5vw;
 }

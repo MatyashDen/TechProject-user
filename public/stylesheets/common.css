@@ -111,8 +111,12 @@ textarea
     src: url('/fonts/Langustine.ttf'); /* Путь к файлу со шрифтом */
 }
 
+body {
+    position: relative;
+}
+
 .wallpaper
-{
+{   
     position: absolute;
     z-index: -10;
 
@@ -120,14 +124,19 @@ textarea
     height: 100%;
 
     opacity: .1;
-    background: url('/favicons/menu-bg.jpg');
+    background: url('/favicons/menu-bg.jpg') repeat;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input[type=date], input[type=time], input[type=datetime-local], input[type=month] {
+        line-height: normal;
+    }
 }
 
 .index-content
 {
     display: block;
 
-    padding-top: 3vw;
+    padding-top: 3.5vw;
 }
 
 .index-title
@@ -354,7 +363,6 @@ button.vintage-link
 {
     width: 80%;
     margin: auto;
-    margin-bottom: 3vw;
 }
 
 .cmn-head
@@ -418,8 +426,8 @@ button.vintage-link
 {
     display: flex;
 
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 /* Items displaying like in products.ejs, stocks.ejs */
@@ -565,9 +573,10 @@ button.vintage-link
 {
     position: relative;
 
-    width: 100%;
-    margin: auto;
     margin-bottom: 3vw;
+    width: 100%;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
 .cmn-input

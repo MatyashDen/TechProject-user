@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <style>
+      #nav-writers {
+        color: white;
+        font-weight: 600;
+      }
+    </style>
+    <link rel="stylesheet" href="/stylesheets/load-page.css">
+    <link rel='stylesheet' href='/stylesheets/writers.css' type='text/css'>
+  </head>
+  <body>
+    <div class="wallpaper"></div>
+
+    <div id="content">
+      <% include ../partials/navigation.ejs %>
+      <% include ../partials/load-page.ejs %>
+      <% let monthes = ["січня", "лютого", "березня", "квiтня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"]; %>
+
+      <% if (writers.length == 0) { %>
+        <div class="cmn-no-tables">
+          Немає письменникiв
+        </div>
+      <% } else { %>
+        <div class="cmn-row">
+          <div class="index-content">
+            <% writers.forEach(function(item) { 
+              let pictureUrl = "/favicons/no-image.svg";
+
+              if (item.pictureUrl !== "")
+                  pictureUrl = item.pictureUrl;
+
+              description = item.description.substr(0, 610);
+
+              if (description != item.description)
+                description += "...";
+            %>
+              <div class="cmn-category-block" data-id="<%= item.id %>">
+                <div class="cmn-category-content">
+                  <% let 
+                    bornDate = item.bornDate,
+                    bornYear = bornDate.substr(0, bornDate.indexOf("-")),
+                    bornMonth = monthes[parseInt(bornDate.substr(bornDate.indexOf("-") + 1, 2)) - 1],
+                    bornDay = parseInt(bornDate.substr(bornDate.lastIndexOf("-") + 1)),
+
+                    deathDate = item.deathDate,
+                    deathYear = deathDate.substr(0, deathDate.indexOf("-")),
+                    deathMonth = monthes[parseInt(deathDate.substr(deathDate.indexOf("-") + 1, 2)) - 1],
+                    deathDay = parseInt(deathDate.substr(deathDate.lastIndexOf("-") + 1));
+                  %>
+                  <div class="cmn-headline">
+                    <%= item.name %> 
+                    (<%= bornDay %> <%= bornMonth %> <%= bornYear %> -
+                    <% if (deathDate == '') { %>
+                      нашi днi)
+                    <% } else { %>
+                      <%= deathDay %> <%= deathMonth %> <%= deathYear %>)
+                    <% } %>
+                  </div>
+                  <div class="flex-wrapper">
+                    <img class="kitchen-img" src="<%= pictureUrl %>">
+                   
+                    <div class="middle-block">
+                      <div class="cmn-subtitle">
+                        <b>Бiографiя:</b> <%= description %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      <% } %> 
+
+  </body>
+</html>
