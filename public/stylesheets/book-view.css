@@ -48,6 +48,14 @@
     content: '';
 }
 
+#book-description {
+    display: block;
+
+    overflow-y: scroll;
+
+    height: 23vw;
+}
+
 .book-head .header
 {
     font-size: 2vw;
