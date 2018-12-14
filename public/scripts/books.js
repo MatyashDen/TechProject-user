@@ -13,8 +13,9 @@
 		bookName = $("#book-name"),
 		bookWriters = $("#book-writers"),
 		bookGenres = $("#book-genres"),
-		bookDescription = $("#book-description"),
 		bookAmount = $("#book-amount"),
+		bookDescription = $("#book-description"),
+		recieveTime = $("#recieve-time"),
 
 		dark = $(".black").eq(1),
 		loadBar = $("#load-bar");
@@ -93,33 +94,55 @@
 		loadBar.css("display", "block");
 
 		if (bookAmount.html()[0] != 0) {
-			let 
-				userId = firebase.auth().currentUser.uid,
-				bookId = $("#book-view-bar").attr("data-bookId"),
-				key = journalCol.doc().id;
+			if (recieveTime.val()) {
+				if (Date.parse(recieveTime.val()) > new Date().getTime()) {
+					let 
+						userId = getCookie("uid"),
+						bookId = $("#book-view-bar").attr("data-bookId"),
+						key = journalCol.doc().id;
 
-			journalCol.where("userId", "==", userId).where("bookId", "==", bookId)
-			.where("status", "==", "new").get()
-			.then(function(journalQuery) {
-				if (journalQuery.size == 0) {
-					journalCol.doc(key).set({
-						id: key,
-						userId: userId,
-						bookId: bookId,
-						status: "new",
-						dateOfAccept: -1,
-						dateOfEnd: -1,
-						dateOfAdd: new Date().getTime()
-					}).then(function() {
-						closeView();
-						displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+					journalCol.where("userId", "==", userId).where("status", "==", "new").get()
+					.then(function(journalNewQuery) {
+						if (journalNewQuery.size < 5) {
+
+							journalCol.where("userId", "==", userId).where("bookId", "==", bookId)
+							.where("status", "==", "new").get()
+							.then(function(journalQuery) {
+								if (journalQuery.size == 0) {
+									journalCol.doc(key).set({
+										id: key,
+										userId: userId,
+										bookId: bookId,
+										status: "new",
+										dateOfAccept: -1,
+										dateOfEnd: -1,
+										dateOfRecieve: recieveTime.val()
+									}).then(function() {
+										closeView();
+										displayMessage("Заявку вiдправлено, зайдiть до бiблiотеки щоб забрати книгу");
+									});
+								} else {
+									loadBar.css("display", "none");
+
+									displayMessage("Заявку вже вiдправлено", 1);
+								}
+							});
+						} else {
+							loadBar.css("display", "none");
+
+							displayMessage("Не можна вiдправляти бiльше 5 заявок одночасно", 1);
+						}
 					});
 				} else {
 					loadBar.css("display", "none");
 
-					displayMessage("Заявку вже вiдправлено", 1);
+					displayMessage("Виберiть корректну дату", 1);
 				}
-			});
+			} else {
+				loadBar.css("display", "none");
+
+				displayMessage("Виберiть дату отримання", 1);
+			}
 		} else {
 			loadBar.css("display", "none");
 
@@ -190,6 +213,7 @@
 	function closeView() {
 		loadBar.css("display", "none");
 
+		recieveTime.val(null);
 		dishViewBar.css("display", "none");
 		dark.css("display", "none");
 	}

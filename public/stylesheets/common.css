@@ -613,7 +613,8 @@ button.vintage-link
 /* active state */
 .cmn-input:focus ~ .cmn-input-label,
 .cmn-input:valid ~ .cmn-input-label,
-[type='date']:invalid ~ .cmn-input-label
+[type='date']:invalid ~ .cmn-input-label,
+[type='datetime-local']:invalid ~ .cmn-input-label
 {
     font-size: 1.3vw;
 
@@ -623,7 +624,7 @@ button.vintage-link
 }
 
 [type='date'] {
-    line-height: auto!important;
+    line-height: normal!important;
 }
 
 /* BOTTOM BARS ================================= */

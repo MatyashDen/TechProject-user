@@ -3,7 +3,6 @@
     display: flex;
 
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .index-dish-card
@@ -11,6 +10,7 @@
     position: relative;
 
     margin-bottom: 2vw;
+    margin-left: 1.5vw;
     width: 18vw;
 }
 

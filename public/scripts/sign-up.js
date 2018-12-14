@@ -47,6 +47,8 @@
 
 								dateOfAdd: new Date().getTime()
 							}).then(function() {
+								setCookie("uid", firebase.auth().currentUser.uid);
+								
 								window.location.href = "/books";
 							});
 						}).catch(function(error) {

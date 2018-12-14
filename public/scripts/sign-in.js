@@ -19,6 +19,7 @@
 			db.collection("users").where("email", "==", userEmail.value).get()
 			.then(function(queryUsers) {
 				if (queryUsers.size == 1) {
+					setCookie("uid", firebase.auth().currentUser.uid);
 					window.location.href = '/books';
 				}
 

@@ -26,12 +26,12 @@
             <span class="dropdown-toggle">Жанри</span>
             <ul class="dropdown-list">
               <% allGenres.forEach(function(item) { %>
-              <li>
-                <label>
-                  <input type="checkbox" name="genreRadio" value="<%= item.id %>">
-                  <span><%= item.title %></span>
-                </label>
-              </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="genreRadio" value="<%= item.id %>">
+                    <span><%= item.title %></span>
+                  </label>
+                </li>
               <% }); %>
             </ul>
           </li>
@@ -40,7 +40,7 @@
             <span class="dropdown-toggle">Автори</span>
             <ul class="dropdown-list">
               <% allWriters.forEach(function(item) { %>
-               <li>
+              <li>
                 <label>
                   <input type="checkbox" name="writerRadio" value="<%= item.id %>">
                   <span><%= item.name %>
@@ -57,12 +57,10 @@
       <span class="black"></span>
       <div class="cmn-row">
         <div class="index-content">
-          <h1 class="index-title">Усі книги</h1>
           <% if (books.length == 0) { %>
-            <div>
-              <span class="index-title">Немає книг...</span>
-            </div>
+            <span class="index-title">Немає книг...</span>
           <% } else { %>
+            <span class="index-title">Усi книги</span>
             <div class="index-dish-card-menu">
               <% books.forEach(function(item, index) { %>
                 <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
@@ -97,6 +95,7 @@
     </script>
     
     <script src="/scripts/message.js"></script>
+    <script src="/scripts/cookie-control.js"></script>
     <script src="/scripts/books.js"></script>
 
   </body>

@@ -19,14 +19,14 @@
       <% include ../partials/load-page.ejs %>
       <% let monthes = ["січня", "лютого", "березня", "квiтня", "травня", "червня", "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"]; %>
 
-      <% if (writers.length == 0) { %>
-        <div class="index-title">
-          Немає письменникiв
-        </div>
-      <% } else { %>
-        <div class="cmn-row">
-          <div class="index-content">
-            <h1 class="index-title">Усі письменики</h1>
+      <div class="cmn-row">
+        <div class="index-content">
+          <% if (writers.length == 0) { %>
+            <span class="index-title">
+              Немає письменникiв...
+            </span>
+          <% } else { %>
+            <span class="index-title">Усі письменики</span>
             <% writers.forEach(function(item) { 
               let pictureUrl = "/favicons/no-image.svg";
 
@@ -69,10 +69,10 @@
                   </div>
                 </div>
               </div>
-            <% }); %>
-          </div>
+            <% }); 
+            } %>
         </div>
-      <% } %> 
+      </div>
 
   </body>
 </html>

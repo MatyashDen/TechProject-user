@@ -53,7 +53,14 @@
 
     overflow-y: scroll;
 
-    height: 23vw;
+    height: 15vw;
+}
+
+.cmn-input-group {
+    height: 2vw;
+    width: 35vw;
+    float: right; 
+    bottom: -2vw;
 }
 
 .book-head .header
