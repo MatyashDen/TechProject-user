@@ -39,77 +39,81 @@
           <span class="cmn-text">Мiй номер телефону: <%= user.phoneNumber %></span>
           <span class="cmn-text">Моя дата народження: <%= user.bornDate.replace(/-/g, ' ') %></span>
         </div>
-        <span class="cmn-headline cmn-center">Хочу прочитати: </span>
-        <div class="index-dish-card-menu">
-          <% requests.forEach(function(item, index) { %>
-            <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
-              <img class="index-card-img" src="<%= item.pictureUrl %>">
-              <div class="card-name"><%= item.bookTitle %></div>
-            </div>
-            <% let recieveTime = item.dateOfRecieve.replace(/T|-/g, " "); %>
-            <div class="cmn-text2">
-              Заберу в бiблiотецi <br> 
-              <%= recieveTime.substr(0, 11) %>
-              <br>
-              <%= "o " + recieveTime.substr(11) %>
-            </div>
-          <% }); %>
-        </div>
+        <% if (requests.length) { %>
+          <span class="cmn-headline cmn-center">Хочу прочитати: </span>
+          <div class="index-dish-card-menu">
+            <% requests.forEach(function(item, index) { %>
+              <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
+                <img class="index-card-img" src="<%= item.pictureUrl %>">
+                <div class="card-name"><%= item.bookTitle %></div>
+              </div>
+              <% let recieveTime = item.dateOfRecieve.replace(/T|-/g, " "); %>
+              <div class="cmn-text2">
+                Заберу в бiблiотецi <br> 
+                <%= recieveTime.substr(0, 11) %>
+                <br>
+                <%= "o " + recieveTime.substr(11) %>
+              </div>
+            <% }); %>
+          </div>
+        <% } %>
+        <% if (active.length) { %>
+          <span class="cmn-headline cmn-center">Зараз читаю:</span>
+          <div class="index-dish-card-menu">
+            <% active.forEach(function(item, index) { %>
+              <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
+                <img class="index-card-img" src="<%= item.pictureUrl %>">
+                <div class="card-name"><%= item.bookTitle %></div>
+              </div>
+              <% 
+              let 
+                startDate = Date.parse(item.dateOfAccept),
+                curDate = new Date().toISOString().slice(0, 10);
 
-        <span class="cmn-headline cmn-center">Зараз читаю:</span>
-        <div class="index-dish-card-menu">
-          <% active.forEach(function(item, index) { %>
-            <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
-              <img class="index-card-img" src="<%= item.pictureUrl %>">
-              <div class="card-name"><%= item.bookTitle %></div>
-            </div>
-            <% 
-            let 
-              startDate = Date.parse(item.dateOfAccept),
-              curDate = new Date().toISOString().slice(0, 10);
+              curDate = Date.parse(curDate);
 
-            curDate = Date.parse(curDate);
+              let 
+                deltaSeconds = (curDate - startDate) / 1000,
+                deltaHours = deltaSeconds / 3600,
+                days = parseInt(deltaHours / 24); %>
 
-            let 
-              deltaSeconds = (curDate - startDate) / 1000,
-              deltaHours = deltaSeconds / 3600,
-              days = parseInt(deltaHours / 24); %>
+              <div class="cmn-text2"> 
+                <%  if (days % 10 >= 5 || days % 100 >= 5 && days % 100 <= 20 || !(days % 10)) { %>
+                      Читаю <%= days %> днiв
+                <%  } else if (days % 10 == 1) { %>
+                      Читаю <%= days %> день
+                <%  } else { %>
+                      Читаю <%= days %> днi
+                <%  } %>
+              </div>
+            <% }); %>
+          </div>
+        <% } %>
+        <% if (archive.length) { %>
+          <span class="cmn-headline cmn-center">Прочитав:</span>
+          <div class="index-dish-card-menu">
+            <% archive.forEach(function(item, index) { %>
+              <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
+                <img class="index-card-img" src="<%= item.pictureUrl %>">
+                <div class="card-name"><%= item.bookTitle %></div>
+              </div>
+              <%  let 
+                    startDate = Date.parse(item.dateOfAccept),
+                    endDate = Date.parse(item.dateOfEnd);
 
-            <div class="cmn-text2"> 
-              <%  if (days % 10 >= 5 || days % 100 >= 5 && days % 100 <= 20 || !(days % 10)) { %>
-                    Читаю <%= days %> днiв
-              <%  } else if (days % 10 == 1) { %>
-                    Читаю <%= days %> день
-              <%  } else { %>
-                    Читаю <%= days %> днi
-              <%  } %>
-            </div>
-          <% }); %>
-        </div>
+                  let 
+                    deltaSeconds = (endDate - startDate) / 1000,
+                    deltaHours = deltaSeconds / 3600,
+                    days = parseInt(deltaHours / 24); %>
 
-        <span class="cmn-headline cmn-center">Прочитав:</span>
-        <div class="index-dish-card-menu">
-          <% archive.forEach(function(item, index) { %>
-            <div class="index-dish-card" data-writers="<%= item.writersId %>" data-genres="<%= item.genresId %>">
-              <img class="index-card-img" src="<%= item.pictureUrl %>">
-              <div class="card-name"><%= item.bookTitle %></div>
-            </div>
-            <%  let 
-                  startDate = Date.parse(item.dateOfAccept),
-                  endDate = Date.parse(item.dateOfEnd);
-
-                let 
-                  deltaSeconds = (endDate - startDate) / 1000,
-                  deltaHours = deltaSeconds / 3600,
-                  days = parseInt(deltaHours / 24); %>
-
-            <div class="cmn-text2">
-              Читав з <br> <%= item.dateOfAccept.replace(/-/g, " ") %> 
-              <br> по <br>
-              <%= item.dateOfEnd.replace(/-/g, " ") %>
-            </div>
-          <% }); %>
-        </div>
+              <div class="cmn-text2">
+                Читав з <br> <%= item.dateOfAccept.replace(/-/g, " ") %> 
+                <br> по <br>
+                <%= item.dateOfEnd.replace(/-/g, " ") %>
+              </div>
+            <% }); %>
+          </div>
+        <% } %>
       </div>
       
       <% include ../partials/message.ejs %>

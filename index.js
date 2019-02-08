@@ -187,6 +187,9 @@ app.get("/profile", function(request, response) {
               });
             });
 
+            if (requestsQuery.size + activeQuery.size + archiveQuery.size == 0)
+              response.render("pages/profile", {user: user, requests: requests, active: active, archive: archive});
+
             barrier.await(function() {
               console.log(archive);
               
